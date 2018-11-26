@@ -1,23 +1,54 @@
 ﻿using UnityEngine;
 
-namespace controller
+namespace chibi.controller.ai
 {
-	namespace ai
+	public class Ai_walk : Chibi_behaviour
 	{
-		public class Ai_walk : Ai
+		public Vector3 desire_direction = Vector3.zero;
+		public float speed = 1f;
+		public bool use_max_speed = true;
+		public Controller controller;
+
+		protected virtual float max_speed
 		{
-			public Vector3 desire_direction = Vector3.left;
-
-			protected virtual void Update()
-			{
-				controller.direction_vector = desire_direction;
+			get {
+				var motor = GetComponent<motor.Motor>();
+				if ( motor )
+					return motor.max_speed;
+				return speed;
 			}
+		}
 
-			protected virtual void OnDrawGizmos()
+		protected virtual float desire_speed
+		{
+			get {
+				if ( use_max_speed )
+					return max_speed;
+				return speed;
+			}
+		}
+
+		protected virtual void Update()
+		{
+			if ( desire_direction != Vector3.zero )
 			{
+				controller.desire_direction = desire_direction;
+				controller.speed = desire_speed;
+			}
+		}
+
+		protected virtual void OnDrawGizmos()
+		{
+			if ( desire_direction != Vector3.zero )
 				helper.draw.arrow.gizmo(
 					transform.position, desire_direction, Color.magenta );
-			}
+		}
+
+		protected override void _init_cache()
+		{
+			base._init_cache();
+			if ( controller == null )
+				controller = GetComponent< Controller >();
 		}
 	}
 }

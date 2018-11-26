@@ -25,9 +25,9 @@ namespace helper {
 		/// <summary>
 		/// Obtiene el vector del stick izquierdo
 		/// </summary>
-		public static Vector2 axis_left {
+		public static Vector3 axis_left {
 			get {
-				return new Vector2( axis_left_x, axis_left_y );
+				return new Vector3( axis_left_x, 0, axis_left_y );
 			}
 		}
 

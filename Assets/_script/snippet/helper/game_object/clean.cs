@@ -10,7 +10,10 @@ namespace helper
 			{
 				var objs = GameObject.FindObjectsOfType<GameObject>();
 				foreach ( var obj in objs )
-					GameObject.Destroy( obj );
+				{
+					if ( obj.name != "New Game Object" )
+						GameObject.Destroy( obj );
+				}
 			}
 		}
 	}

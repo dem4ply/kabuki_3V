@@ -4,7 +4,7 @@ namespace controller
 {
 	namespace ai
 	{
-		public class Ai_goomba : Ai_walk
+		public class Ai_goomba : Ai_walk_old
 		{
 			void OnCollisionEnter2D( Collision2D collision )
 			{

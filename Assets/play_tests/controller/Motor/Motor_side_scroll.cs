@@ -16,7 +16,7 @@ namespace tests.controller.motor
 		public override string scene_dir
 		{
 			get {
-				return "tests/controller/motor/motor side scroll";
+				return "tests/scene/controller/motor/motor side scroll";
 			}
 		}
 

@@ -8,7 +8,7 @@ using chibi.controller.ai;
 
 namespace tests.controller.motor
 {
-	public class Motor : helper.tests.Scene_test
+	public class Motor_isometric : helper.tests.Scene_test
 	{
 		Assert_colision up, down, left, right, jump;
 		Ai_walk ai;
@@ -16,7 +16,7 @@ namespace tests.controller.motor
 		public override string scene_dir
 		{
 			get {
-				return "tests/scene/controller/motor/motor";
+				return "tests/scene/controller/motor/motor isometric";
 			}
 		}
 
@@ -86,11 +86,11 @@ namespace tests.controller.motor
 		}
 
 		[UnityTest]
-		public IEnumerator when_go_to_up_in_y_should_touch_jump()
+		public IEnumerator when_go_to_up_in_y_should_touch_nothing()
 		{
 			ai.desire_direction = Vector3.up;
 			yield return new WaitForSeconds( 1 );
-			jump.assert_collision_enter( ai.gameObject );
+			jump.assert_not_collision_enter();
 			up.assert_not_collision_enter();
 			left.assert_not_collision_enter();
 			down.assert_not_collision_enter();

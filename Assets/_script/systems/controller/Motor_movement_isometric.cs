@@ -16,7 +16,7 @@ namespace chibi.systems.controller
 		struct group
 		{
 			public Controller controller;
-			public Motor_isometric motor;
+			public Motor_npc_isometric motor;
 			public Transform transform;
 		}
 

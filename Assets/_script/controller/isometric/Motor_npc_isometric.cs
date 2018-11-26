@@ -8,7 +8,7 @@ using System;
 namespace chibi.motor
 {
 
-	public class Motor_isometric : Motor
+	public class Motor_npc_isometric : Motor_npc
 	{
 	}
 }

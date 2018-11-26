@@ -16,7 +16,7 @@ namespace chibi.systems.controller
 		struct group
 		{
 			public Controller controller;
-			public Motor_side_scroll motor;
+			public Motor_npc_side_scroll motor;
 			public Transform transform;
 		}
 

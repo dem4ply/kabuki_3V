@@ -8,7 +8,7 @@ using System;
 namespace chibi.motor
 {
 
-	public class Motor_side_scroll : Motor
+	public class Motor_npc_side_scroll : Motor_npc
 	{
 	}
 }

@@ -22,6 +22,7 @@ namespace chibi.systems.controller
 
 		protected override void OnUpdate()
 		{
+			float delta_time = Time.deltaTime;
 			foreach ( var entity in GetEntities<group>() )
 			{
 				Vector3 desire_velocity =
@@ -31,7 +32,7 @@ namespace chibi.systems.controller
 				if ( desire_velocity.magnitude > entity.motor.max_speed )
 					desire_velocity = desire_velocity.normalized
 						* entity.motor.max_speed;
-				entity.transform.Translate( desire_velocity * Time.deltaTime );
+				entity.transform.Translate( desire_velocity * delta_time );
 			}
 
 		}

@@ -22,20 +22,19 @@ namespace chibi.systems.controller
 
 		protected override void OnUpdate()
 		{
+			float delta_time = Time.deltaTime;
 			foreach ( var entity in GetEntities<group>() )
 			{
 				Vector3 desire_direction = new Vector3(
-					entity.controller.desire_direction.x,
-					entity.controller.desire_direction.z,
-					entity.controller.desire_direction.y
-				);
+					0, 0, entity.controller.desire_direction.z );
+
 				Vector3 desire_velocity =
 					desire_direction * entity.controller.speed;
 
 				if ( desire_velocity.magnitude > entity.motor.max_speed )
 					desire_velocity = desire_velocity.normalized
 						* entity.motor.max_speed;
-				entity.transform.Translate( desire_velocity * Time.deltaTime );
+				entity.transform.Translate( desire_velocity * delta_time );
 			}
 
 		}

@@ -103,7 +103,7 @@ MonoBehaviour:
     _x: 0
     _y: 0
     _z: 0
-  max_speed: 2
+  max_speed: 4
 --- !u!114 &1359830470592594702
 MonoBehaviour:
   m_ObjectHideFlags: 0

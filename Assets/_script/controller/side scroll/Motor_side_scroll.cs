@@ -5,10 +5,9 @@ using controller.animator;
 using Unity.Entities;
 using System;
 
-namespace chibi.motor
+namespace chibi.motor.npc
 {
-
-	public class Motor_npc_isometric : Motor_npc
+	public class Motor_side_scroll : Motor
 	{
 	}
 }

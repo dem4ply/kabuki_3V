@@ -18,7 +18,7 @@ namespace chibi.tag
 		public static string scenary
 		{
 			get {
-				return "scenary";
+				return "scenery";
 			}
 		}
 

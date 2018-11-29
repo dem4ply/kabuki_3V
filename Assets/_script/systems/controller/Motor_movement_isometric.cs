@@ -6,7 +6,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using System.Collections;
 using chibi.controller;
-using chibi.motor;
+using chibi.motor.npc;
 
 namespace chibi.systems.controller
 {
@@ -16,7 +16,7 @@ namespace chibi.systems.controller
 		struct group
 		{
 			public Controller controller;
-			public Motor_npc_isometric motor;
+			public Motor_isometric motor;
 			public Transform transform;
 		}
 
@@ -36,8 +36,8 @@ namespace chibi.systems.controller
 					desire_velocity = desire_velocity.normalized
 						* entity.motor.max_speed;
 				entity.transform.Translate( desire_velocity * delta_time );
+				entity.motor.current_speed = desire_velocity;
 			}
-
 		}
 	}
 }

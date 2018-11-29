@@ -57,7 +57,6 @@ namespace controller
 					return !is_walled;
 				}
 			}
-
 			#endregion
 
 			#region funciones de movimiento

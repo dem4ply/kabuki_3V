@@ -1,21 +1,14 @@
 ﻿using UnityEngine;
 using Unity.Entities;
-using Unity.Jobs;
-using Unity.Burst;
-using Unity.Mathematics;
-using Unity.Transforms;
-using System.Collections;
-using chibi.controller;
 using chibi.motor;
 
-namespace chibi.systems.controller
+namespace chibi.systems.motor
 {
 	public class Motor_movement : ComponentSystem
 	{
 
 		struct group
 		{
-			public Controller controller;
 			public Motor motor;
 			public Transform transform;
 		}
@@ -26,17 +19,15 @@ namespace chibi.systems.controller
 			foreach ( var entity in GetEntities<group>() )
 			{
 				Vector3 desire_velocity =
-					entity.controller.desire_direction.normalized
-					* entity.controller.speed;
+					entity.motor.desire_direction.normalized
+					* entity.motor.desire_speed;
 
 				if ( desire_velocity.magnitude > entity.motor.max_speed )
 					desire_velocity = desire_velocity.normalized
 						* entity.motor.max_speed;
 				entity.transform.Translate( desire_velocity * delta_time );
+				entity.motor.current_speed = desire_velocity;
 			}
-
 		}
-
-
 	}
 }

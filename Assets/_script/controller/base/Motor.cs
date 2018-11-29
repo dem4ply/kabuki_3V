@@ -10,7 +10,7 @@ namespace chibi.motor
 	public class Motor : Chibi_behaviour
 	{
 		public unsigned_vector3 period_to_desice_direction;
-		public Vector3 desire_direction;
+		private Vector3 _desire_direction;
 		public float desire_speed;
 		public float max_speed = 4f;
 		public Vector3 current_speed = Vector3.zero;
@@ -29,6 +29,17 @@ namespace chibi.motor
 			get {
 				return desire_direction.normalized
 					* Mathf.Clamp( desire_speed, 0, max_speed );
+			}
+		}
+
+		public virtual Vector3 desire_direction
+		{
+			get {
+				return _desire_direction;
+			}
+
+			set {
+				_desire_direction = value;
 			}
 		}
 

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using chibi.motor;
 
 namespace chibi.controller.npc
 {
 	public class Controller_npc : Controller
 	{
-		protected manager.Collision manager_collisions;
 
 		public Vector3 angle_vector_for_floor = Vector3.left;
 		public float min_angle_for_floor = 20f;
@@ -17,6 +17,9 @@ namespace chibi.controller.npc
 
 		public const string STR_WALL = "wall";
 		public const string STR_FLOOR = "floor";
+
+		protected manager.Collision manager_collisions;
+		protected Vertical_jump jump_motor;
 
 		#region propiedades publicas
 		public virtual bool is_grounded
@@ -53,6 +56,13 @@ namespace chibi.controller.npc
 			base._init_cache();
 			manager_collisions = new manager.Collision();
 		}
+
+		#region manejo de salto
+		public virtual void jump()
+		{
+			jump_motor.want_to_jump = true;
+		}
+		#endregion
 
 		#region manejo de coliciones
 		protected virtual void _proccess_collision( Collision collision )
@@ -92,7 +102,8 @@ namespace chibi.controller.npc
 		{
 			foreach ( ContactPoint contact in collision.contacts )
 			{
-				float angle = Vector2.Angle( angle_vector_for_wall, contact.normal );
+				float angle = Vector2.Angle(
+					angle_vector_for_wall, contact.normal );
 				Debug.Log( contact.normal );
 				Debug.Log( angle );
 				Debug.Log( min_angle_for_wall );
@@ -100,7 +111,9 @@ namespace chibi.controller.npc
 				Debug.Log( helper.math.between(
 						angle, min_angle_for_wall, max_angle_for_wall ) );
 				if ( helper.math.between(
-						angle, min_angle_for_wall, max_angle_for_wall ) )
+						angle, min_angle_for_wall, max_angle_for_wall )
+						|| contact.normal == Vector3.forward
+						|| contact.normal == Vector3.back )
 				{
 					manager_collisions.add(
 						new manager.Collision_info( STR_WALL, collision ) );
@@ -139,5 +152,19 @@ namespace chibi.controller.npc
 				}
 		}
 		#endregion
+
+		protected override void load_motors()
+		{
+			base.load_motors();
+			jump_motor = GetComponent<Vertical_jump>();
+			if ( !jump_motor )
+			{
+				Debug.LogError(
+					string.Format(
+						"no se encontro un motor de salto en el object {0}" +
+						"se agrega un motor", name ) );
+				jump_motor = gameObject.AddComponent<Vertical_jump>();
+			}
+		}
 	}
 }

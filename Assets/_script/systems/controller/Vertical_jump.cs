@@ -23,6 +23,7 @@ namespace chibi.systems.motor
 						entity.rigidbody.velocity.x,
 						entity.motor.desire_velocity,
 						entity.rigidbody.velocity.z );
+					entity.motor.want_to_jump = false;
 				}
 			}
 		}

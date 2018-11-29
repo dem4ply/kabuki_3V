@@ -7,6 +7,7 @@ using System;
 
 namespace chibi.motor
 {
+	[ RequireComponent( typeof( Rigidbody ) ) ]
 	public class Motor : Chibi_behaviour
 	{
 		public unsigned_vector3 period_to_desice_direction;

@@ -6,7 +6,6 @@ namespace chibi.systems.motor
 {
 	public class Motor_movement : ComponentSystem
 	{
-
 		struct group
 		{
 			public Motor motor;

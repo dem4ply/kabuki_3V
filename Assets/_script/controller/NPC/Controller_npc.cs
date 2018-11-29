@@ -15,8 +15,8 @@ namespace chibi.controller.npc
 		public float min_angle_for_wall = 70f;
 		public float max_angle_for_wall = 110;
 
-		public const string STR_WALL = "wall";
-		public const string STR_FLOOR = "floor";
+		public static string STR_WALL = "wall";
+		public static string STR_FLOOR = "floor";
 
 		protected manager.Collision manager_collisions;
 		protected Vertical_jump jump_motor;
@@ -53,8 +53,8 @@ namespace chibi.controller.npc
 
 		protected override void _init_cache()
 		{
-			base._init_cache();
 			manager_collisions = new manager.Collision();
+			base._init_cache();
 		}
 
 		#region manejo de salto
@@ -159,6 +159,9 @@ namespace chibi.controller.npc
 						"se agrega un motor", name ) );
 				jump_motor = gameObject.AddComponent<Vertical_jump>();
 			}
+
+			jump_motor.manager_collisions = manager_collisions;
+			motor.manager_collisions = manager_collisions;
 		}
 	}
 }

@@ -10,10 +10,11 @@ namespace chibi.motor
 	[ RequireComponent( typeof( Rigidbody ) ) ]
 	public class Vertical_jump: Chibi_behaviour
 	{
-		public Vector3 jump_direction = Vector3.up;
 		public float max_jump_heigh = 4f;
 		public float min_jump_heigh = 1f;
 		public float jump_time = 0.4f;
+
+		public manager.Collision manager_collisions;
 
 		protected float max_jump_velocity;
 		protected float min_jump_velocity;
@@ -28,16 +29,26 @@ namespace chibi.motor
 			}
 		}
 
-		public virtual Vector3 desire_velocity
+		public virtual float desire_velocity
 		{
 			get {
-				return jump_direction * max_jump_heigh;
+				return max_jump_velocity;
 			}
 		}
 
 		public virtual bool is_grounded
 		{
-			get; set;
+			get {
+				return manager_collisions[
+					controller.npc.Controller_npc.STR_FLOOR ];
+			}
+		}
+
+		public virtual bool is_not_grounded
+		{
+			get {
+				return !is_grounded;
+			}
 		}
 
 		public virtual bool want_to_jump

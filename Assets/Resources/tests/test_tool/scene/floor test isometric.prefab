@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 1752456066442336117}
   m_Layer: 0
   m_Name: floor test isometric
-  m_TagString: Untagged
+  m_TagString: scenery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

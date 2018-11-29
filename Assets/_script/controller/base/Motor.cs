@@ -16,6 +16,8 @@ namespace chibi.motor
 		public float max_speed = 4f;
 		public Vector3 current_speed = Vector3.zero;
 
+		public manager.Collision manager_collisions;
+
 		protected Rigidbody ridgetbody;
 
 		public Vector3 velocity

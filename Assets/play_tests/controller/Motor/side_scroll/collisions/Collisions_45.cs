@@ -59,7 +59,7 @@ namespace tests.controller.npc.side_scroll
 		public IEnumerator should_be_walled_if_hit_in_front()
 		{
 			ai.desire_direction = Vector3.forward;
-			yield return new WaitForSeconds( 2.5f );
+			yield return new WaitForSeconds( 3f );
 			Assert.IsTrue( motor.is_walled );
 		}
 
@@ -67,7 +67,7 @@ namespace tests.controller.npc.side_scroll
 		public IEnumerator should_be_walled_if_hit_in_back()
 		{
 			ai.desire_direction = Vector3.back;
-			yield return new WaitForSeconds( 2.5f );
+			yield return new WaitForSeconds( 3f );
 			Assert.IsTrue( motor.is_walled );
 		}
 	}

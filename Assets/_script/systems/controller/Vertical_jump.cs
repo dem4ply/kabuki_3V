@@ -18,7 +18,12 @@ namespace chibi.systems.motor
 			foreach ( var entity in GetEntities<group>() )
 			{
 				if ( entity.motor.want_to_jump && entity.motor.is_grounded )
-					entity.rigidbody.velocity += entity.motor.desire_velocity;
+				{
+					entity.rigidbody.velocity = new Vector3(
+						entity.rigidbody.velocity.x,
+						entity.motor.desire_velocity,
+						entity.rigidbody.velocity.z );
+				}
 			}
 		}
 	}

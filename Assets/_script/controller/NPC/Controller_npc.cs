@@ -104,12 +104,6 @@ namespace chibi.controller.npc
 			{
 				float angle = Vector2.Angle(
 					angle_vector_for_wall, contact.normal );
-				Debug.Log( contact.normal );
-				Debug.Log( angle );
-				Debug.Log( min_angle_for_wall );
-				Debug.Log( max_angle_for_wall );
-				Debug.Log( helper.math.between(
-						angle, min_angle_for_wall, max_angle_for_wall ) );
 				if ( helper.math.between(
 						angle, min_angle_for_wall, max_angle_for_wall )
 						|| contact.normal == Vector3.forward

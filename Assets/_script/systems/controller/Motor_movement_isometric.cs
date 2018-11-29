@@ -25,7 +25,9 @@ namespace chibi.systems.controller
 			foreach ( var entity in GetEntities<group>() )
 			{
 				Vector3 desire_velocity = entity.motor.desire_velocity;
-				entity.rigidbody.velocity = desire_velocity;
+				entity.rigidbody.velocity = new Vector3(
+					desire_velocity.x, entity.rigidbody.velocity.y,
+					desire_velocity.z );
 				entity.motor.current_speed = desire_velocity;
 			}
 		}

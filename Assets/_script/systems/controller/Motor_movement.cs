@@ -10,7 +10,7 @@ namespace chibi.systems.motor
 		struct group
 		{
 			public Motor motor;
-			public Transform transform;
+			public Rigidbody rigidbody;
 		}
 
 		protected override void OnUpdate()
@@ -18,14 +18,8 @@ namespace chibi.systems.motor
 			float delta_time = Time.deltaTime;
 			foreach ( var entity in GetEntities<group>() )
 			{
-				Vector3 desire_velocity =
-					entity.motor.desire_direction.normalized
-					* entity.motor.desire_speed;
-
-				if ( desire_velocity.magnitude > entity.motor.max_speed )
-					desire_velocity = desire_velocity.normalized
-						* entity.motor.max_speed;
-				entity.transform.Translate( desire_velocity * delta_time );
+				Vector3 desire_velocity = entity.motor.desire_velocity;
+				entity.rigidbody.velocity = desire_velocity;
 				entity.motor.current_speed = desire_velocity;
 			}
 		}

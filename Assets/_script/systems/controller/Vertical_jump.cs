@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using Unity.Entities;
 using chibi.motor;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace chibi.systems.motor
 {
+	[UpdateAfter( typeof( FixedUpdate ) ) ]
 	public class Vertical_jump : ComponentSystem
 	{
 		struct group

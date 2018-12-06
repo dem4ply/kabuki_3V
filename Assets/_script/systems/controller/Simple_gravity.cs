@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using Unity.Entities;
 using chibi.motor;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace chibi.systems.motor
 {
+	[UpdateAfter( typeof( Vertical_jump ) ) ]
+	[UpdateAfter( typeof( FixedUpdate ) ) ]
 	public class Simple_gravity : ComponentSystem
 	{
 		struct group

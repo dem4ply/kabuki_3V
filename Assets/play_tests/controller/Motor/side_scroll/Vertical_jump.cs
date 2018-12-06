@@ -8,7 +8,7 @@ using chibi.motor;
 using helper.test.assert;
 using System.Linq;
 
-namespace tests.controller.motor.isometric.jump
+namespace tests.controller.motor.side_scroll.jump
 {
 	public class Vertical_jump : helper.tests.Scene_test
 	{
@@ -18,7 +18,7 @@ namespace tests.controller.motor.isometric.jump
 		public override string scene_dir
 		{
 			get {
-				return "tests/scene/controller/motor/npc/motor isometric";
+				return "tests/scene/controller/motor/npc/motor side scroll";
 			}
 		}
 

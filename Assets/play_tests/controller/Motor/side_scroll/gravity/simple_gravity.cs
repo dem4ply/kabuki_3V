@@ -6,9 +6,9 @@ using UnityEngine.TestTools;
 using helper.test.assert;
 using chibi.controller.ai;
 
-namespace tests.controller.motor.side_scroll.simple_gravity
+namespace tests.controller.motor.side_scroll.gravity
 {
-	public class movement : helper.tests.Scene_test
+	public class simple_gravity : helper.tests.Scene_test
 	{
 		Assert_colision up, down, left, right, jump, jump_2;
 		Ai_walk ai;

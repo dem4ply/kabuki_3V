@@ -61,7 +61,6 @@ namespace tests.controller.motor.isometric.gravity
 			up.assert_not_collision_enter();
 			left.assert_not_collision_enter();
 			right.assert_not_collision_enter();
-			jump.assert_not_collision_enter();
 		}
 
 		[UnityTest]

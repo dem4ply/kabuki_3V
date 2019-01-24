@@ -15,6 +15,17 @@ namespace weapon
 
 			public override Bullet_controller_3d shot()
 			{
+				throw new System.NotImplementedException();
+			}
+
+			public override Bullet_controller_3d shot( Rol_sheet owner )
+			{
+				throw new System.NotImplementedException();
+			}
+
+			/*
+			public override Bullet_controller_3d shot()
+			{
 				var bullet = ammo.instanciate( transform.position, owner );
 				bullet.shot( direction_shot );
 				return bullet;
@@ -26,6 +37,7 @@ namespace weapon
 				bullet.shot( direction_shot );
 				return bullet;
 			}
+			*/
 
 
 			protected void OnDrawGizmos()

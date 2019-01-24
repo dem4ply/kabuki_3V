@@ -48,6 +48,7 @@ namespace controller
 			{
 			}
 
+			/*
 			public override void died()
 			{
 				base.died();
@@ -63,6 +64,7 @@ namespace controller
 				else
 					Destroy( gameObject );
 			}
+			*/
 
 			protected override void _init_cache()
 			{

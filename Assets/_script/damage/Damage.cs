@@ -34,13 +34,17 @@ namespace damage
 		{
 			if ( !taken_by.Contains( hp_motor ) )
 				taken_by.Add( hp_motor );
-			Debug.Log( string.Format( "dano tomado por {0}", hp_motor.name ) );
+			Debug.Log( string.Format(
+				"[Damage] danno tomado por {0}",
+				helper.game_object.name.full( hp_motor.gameObject ) ) );
+
 			if ( behavior != null )
 				behavior.taken_damange( this );
 			else
 				Debug.Log(
 					string.Format(
-						"el {0} damage no tiene un behavior", gameObject ) );
+						"[Damage] el '{0}' damage no tiene un behavior",
+						helper.game_object.name.full( gameObject ) ) );
 		}
 	}
 }

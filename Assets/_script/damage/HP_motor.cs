@@ -11,7 +11,8 @@ namespace damage
 			[HideInInspector] public float current_points = 1;
 
 			public LayerMask damage_mask;
-			public controller.motor.Motor_base motor;
+			//public controller.motor.Motor_base motor;
+			public rol_sheet.Rol_sheet rol;
 
 			public virtual bool is_dead
 			{
@@ -25,8 +26,9 @@ namespace damage
 				current_points -= damage.amount;
 				if ( is_dead )
 				{
-					Debug.Log( string.Format( "murio: {0}", name ) );
-					send_died();
+					Debug.Log( string.Format(
+						"[HP_motor] murio: {0}",
+						helper.game_object.name.full( gameObject ) ) );
 				}
 			}
 
@@ -75,37 +77,26 @@ namespace damage
 			protected virtual bool is_my_damage( Damage damage )
 			{
 				if ( damage.owner != null )
-					return damage.owner == motor.my_rol;
+					return damage.owner == rol;
 				return false;
 			}
 
 			protected virtual bool is_from_my_faction( Damage damage )
 			{
 				if ( damage.owner != null )
-					return damage.owner.faction == motor.my_rol.faction;
+					return damage.owner.faction == rol.faction;
 				return false;
-			}
-
-			protected virtual void send_died()
-			{
-				motor.died();
 			}
 
 			protected override void _init_cache()
 			{
 				base._init_cache();
-				if ( motor == null )
+				if ( damage_mask.value == 0 )
+					damage_mask = helper.consts.layers.receives_damage;
+				if ( stat != null )
 				{
-					motor = GetComponent< controller.motor.Motor_base >();
-					if ( motor == null )
-						Debug.LogError( "no se encontro el motor" );
-					if ( damage_mask.value == 0 )
-						damage_mask = helper.consts.layers.receives_damage;
-					if ( stat != null )
-					{
-						total_of_points = stat.total;
-						current_points = stat.current;
-					}
+					total_of_points = stat.total;
+					current_points = stat.current;
 				}
 			}
 		}

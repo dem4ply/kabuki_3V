@@ -12,6 +12,11 @@ namespace chibi.weapon.gun
 
 		public bool automatic_shot = false;
 
+		public Vector3 direction_shot
+		{
+			get { return transform.forward.normalized; }
+		}
+
 		public abstract void shot();
 
 		public override void attack()
@@ -41,6 +46,14 @@ namespace chibi.weapon.gun
 		{
 			return Gun_stat.CreateInstance<Gun_stat>()
 				.find_default<Gun_stat>();
+		}
+
+		protected void OnDrawGizmos()
+		{
+			Gizmos.color = Color.blue;
+			Gizmos.DrawWireSphere( transform.position, 0.2f );
+			Gizmos.color = Color.red;
+			helper.draw.arrow.gizmo( transform.position, direction_shot );
 		}
 	}
 }

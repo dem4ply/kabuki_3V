@@ -66,7 +66,10 @@ namespace helper.test.assert
 		public void assert_not_collision_enter()
 		{
 			if ( collisions_enters.Count > 0 )
+			{
+				var list_of_names = build_list_of_names( collisions_enters );
 				raise_a_fail( "se encontraron collisiones" );
+			}
 		}
 
 		public void assert_not_collision_enter( GameObject obj )
@@ -86,11 +89,16 @@ namespace helper.test.assert
 				if ( e.game_object == obj )
 				{
 					string msg = string.Format(
-						"el gameobject {0} nunca salio del collider", obj );
+						"el gameobject {0} nunca salio del collider",
+						helper.game_object.name.full( obj ) );
 					raise_a_fail( msg );
 				}
 		}
 
+		public void assert_not_collision_exit( MonoBehaviour obj )
+		{
+			assert_not_collision_exit( obj.gameObject );
+		}
 
 		public void assert_not_collision_enter( MonoBehaviour obj )
 		{
@@ -120,6 +128,24 @@ namespace helper.test.assert
 		private void raise_a_fail( string msg )
 		{
 			throw new System.Exception( msg );
+		}
+
+		protected List<string> build_list_of_names( 
+			List<obj.Assert_collision_event> collisions )
+		{
+			List<obj.Assert_collision_event> result =
+				new List<obj.Assert_collision_event>();
+			foreach ( var e in collisions_enters )
+			{
+				string name = helper.game_object.name.full( e.game_object );
+				result.Add( name );
+			}
+			return result;
+		}
+
+		protected string compact_list_of_names( List<string> names )
+		{
+			return String.Join( ", ", names.ToArray() );
 		}
 	}
 }

@@ -67,7 +67,8 @@ namespace chibi.joystick
 		{
 			update_all_axis();
 			update_all_buttons();
-			// si pasa la zona muerta el stick entonces se mueve y cambia la direcion
+			// si pasa la zona muerta el stick entonces se mueve
+			// y cambia la direcion
 			if ( is_pass_deadzone_esdf_axis )
 			{
 				controller.desire_direction = axis_esdf;

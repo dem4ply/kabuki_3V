@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Linear_gun : MonoBehaviour
+namespace chibi.weapon.gun
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public class Linear_gun : Gun
+	{
+		public override void shot()
+		{
+			throw new System.NotImplementedException();
+		}
+	}
 }

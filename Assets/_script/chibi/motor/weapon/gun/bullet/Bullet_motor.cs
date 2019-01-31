@@ -3,6 +3,7 @@ using System.Collections;
 using controller.animator;
 using controller.motor;
 using System;
+using weapon.ammo;
 
 namespace chibi.motor.weapons.gun.bullet
 {
@@ -11,6 +12,6 @@ namespace chibi.motor.weapons.gun.bullet
 			protected float velocity_smooth_x, velocity_smooth_y;
 			protected float velocity_smooth_z;
 
-			public weapon.ammo.Ammo ammo;
+			public Ammo ammo;
 		}
 }

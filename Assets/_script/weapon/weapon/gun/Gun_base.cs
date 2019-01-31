@@ -69,7 +69,6 @@ namespace weapon
 				return Gun_stat.CreateInstance<Gun_stat>()
 					.find_default<Gun_stat>();
 			}
-
 		}
 	}
 }

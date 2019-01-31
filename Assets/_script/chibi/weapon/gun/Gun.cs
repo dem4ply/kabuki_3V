@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Unity.Entities;
 using weapon.stat;
 using weapon.ammo;
+
+using chibi.controller.weapon.gun.bullet;
+
 
 namespace chibi.weapon.gun
 {
@@ -12,12 +16,21 @@ namespace chibi.weapon.gun
 
 		public bool automatic_shot = false;
 
+		[HideInInspector] public float last_automatic_shot = 0f;
+
 		public Vector3 direction_shot
 		{
 			get { return transform.forward.normalized; }
 		}
 
-		public abstract void shot();
+		public float rate_fire
+		{
+			get {
+				return 1 / stat.rate_fire;
+			}
+		}
+
+		public abstract Controller_bullet shot();
 
 		public override void attack()
 		{

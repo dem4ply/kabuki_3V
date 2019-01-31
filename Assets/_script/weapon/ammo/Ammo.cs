@@ -34,9 +34,11 @@ namespace weapon
 				Vector3 position, rol_sheet.Rol_sheet owner )
 			{
 				Bullet_motor obj = instanciate( position );
+				/*
 				Damage[] damages = null; // obj.damages;
 				foreach ( Damage damage in damages )
 					damage.owner = owner;
+				*/
 				return obj;
 			}
 		}

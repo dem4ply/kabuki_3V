@@ -43,6 +43,10 @@ namespace helper.tests
 			var manager = World.Active.GetOrCreateManager<EntityManager>();
 			*/
 			scene = Resources.Load( scene_dir ) as GameObject;
+			if ( scene == null )
+				Assert.Fail(
+					string.Format(
+						"no se pudo cargar la scena en '{0}'", scene_dir ) );
 			scene = instantiate._( scene );
 		}
 

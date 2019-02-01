@@ -8,7 +8,7 @@ namespace chibi.systems.weapon.gun.bullet
 	{
 		struct group
 		{
-			public Bullet_motor motor;
+			public chibi.motor.weapons.gun.bullet.Bullet_motor motor;
 			public Rigidbody rigidbody;
 		}
 
@@ -16,9 +16,9 @@ namespace chibi.systems.weapon.gun.bullet
 		{
 			foreach ( var entity in GetEntities<group>() )
 			{
+				entity.motor.desire_speed = entity.motor.max_speed;
 				Vector3 desire_velocity = entity.motor.desire_velocity;
 				entity.rigidbody.velocity = desire_velocity;
-				entity.motor.current_speed = desire_velocity;
 			}
 		}
 	}

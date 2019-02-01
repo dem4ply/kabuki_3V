@@ -68,7 +68,10 @@ namespace helper.test.assert
 			if ( collisions_enters.Count > 0 )
 			{
 				var list_of_names = build_list_of_names( collisions_enters );
-				raise_a_fail( "se encontraron collisiones" );
+				string names = compact_list_of_names( list_of_names );
+				string msg = string.Format(
+					"se encontraron colisiones :: {0}", names );
+				raise_a_fail( msg );
 			}
 		}
 
@@ -130,11 +133,10 @@ namespace helper.test.assert
 			throw new System.Exception( msg );
 		}
 
-		protected List<string> build_list_of_names( 
+		protected List<string> build_list_of_names(
 			List<obj.Assert_collision_event> collisions )
 		{
-			List<obj.Assert_collision_event> result =
-				new List<obj.Assert_collision_event>();
+			List<string> result = new List<string>();
 			foreach ( var e in collisions_enters )
 			{
 				string name = helper.game_object.name.full( e.game_object );
@@ -145,7 +147,7 @@ namespace helper.test.assert
 
 		protected string compact_list_of_names( List<string> names )
 		{
-			return String.Join( ", ", names.ToArray() );
+			return string.Join<string>( ", ", names );
 		}
 	}
 }

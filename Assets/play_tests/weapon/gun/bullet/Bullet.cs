@@ -51,5 +51,57 @@ namespace tests.weapon.gun.bullet
 			back.assert_not_collision_enter();
 			forward.assert_not_collision_enter();
 		}
+
+		[UnityTest]
+		public IEnumerator if_desire_direction_is_up_should_only_touch_forward()
+		{
+			bullet.desire_direction = Vector3.forward;
+			yield return new WaitForSeconds( 1 );
+			tests_tool.assert.game_object.is_not_null( bullet );
+
+			left.assert_not_collision_enter();
+			right.assert_not_collision_enter();
+			back.assert_not_collision_enter();
+			forward.assert_collision_enter( bullet );
+		}
+
+		[UnityTest]
+		public IEnumerator if_desire_direction_is_back_should_only_touch_back()
+		{
+			bullet.desire_direction = Vector3.back;
+			yield return new WaitForSeconds( 1 );
+			tests_tool.assert.game_object.is_not_null( bullet );
+
+			left.assert_not_collision_enter();
+			right.assert_not_collision_enter();
+			forward.assert_not_collision_enter();
+			back.assert_collision_enter( bullet );
+		}
+
+		[UnityTest]
+		public IEnumerator if_desire_direction_is_left_should_only_touch_left()
+		{
+			bullet.desire_direction = Vector3.left;
+			yield return new WaitForSeconds( 1 );
+			tests_tool.assert.game_object.is_not_null( bullet );
+
+			back.assert_not_collision_enter();
+			right.assert_not_collision_enter();
+			forward.assert_not_collision_enter();
+			left.assert_collision_enter( bullet );
+		}
+
+		[UnityTest]
+		public IEnumerator if_desire_direction_is_right_should_only_touch_right()
+		{
+			bullet.desire_direction = Vector3.right;
+			yield return new WaitForSeconds( 1 );
+			tests_tool.assert.game_object.is_not_null( bullet );
+
+			back.assert_not_collision_enter();
+			left.assert_not_collision_enter();
+			forward.assert_not_collision_enter();
+			right.assert_collision_enter( bullet );
+		}
 	}
 }

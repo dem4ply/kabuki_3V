@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using chibi.motor.weapons.gun.turrent;
 using snippet.objects;
 
-namespace chibi.systems.weapon.gun.turrent
+namespace chibi.editor.motor.weapons.gun.turrent
 {
 	[CustomEditor( typeof( Turrent ), true )]
 	public class Turrent_inspector : Editor

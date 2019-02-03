@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 using helper.test.assert;
 using chibi.controller.weapon.gun.bullet;
 
-namespace tests.motor.weapons.gun.turrent
+namespace tests.controller.weapon.gun.turrent
 {
 	public class Turrent : helper.tests.Scene_test
 	{
@@ -40,64 +40,48 @@ namespace tests.motor.weapons.gun.turrent
 		}
 
 		[UnityTest]
-		public IEnumerator move_left_should_can_hit_left_assert()
+		public IEnumerator move_left_should_can_shot()
 		{
 			turrent.desire_direction = Vector3.left;
 			yield return new WaitForSeconds( 1 );
-			controller.shot();
-			yield return new WaitForSeconds( 1 );
-			left.assert_collision_enter();
 
-			right.assert_not_collision_enter();
-			forward.assert_not_collision_enter();
-			back.assert_not_collision_enter();
+			var bullets = controller.shot();
+			Assert.AreEqual( bullets.Count, 1 );
+			foreach ( var bullet in bullets )
+				Assert.False( helper.game_object.comp.is_null( bullet ) );
 		}
 
 		[UnityTest]
-		public IEnumerator move_right_should_can_hit_right_assert()
+		public IEnumerator move_right_should_can_shot()
 		{
 			turrent.desire_direction = Vector3.right;
 			yield return new WaitForSeconds( 1 );
-			controller.shot();
-			yield return new WaitForSeconds( 1 );
-			right.assert_collision_enter();
-
-			left.assert_not_collision_enter();
-			forward.assert_not_collision_enter();
-			back.assert_not_collision_enter();
+			var bullets = controller.shot();
+			Assert.AreEqual( bullets.Count, 1 );
+			foreach ( var bullet in bullets )
+				Assert.False( helper.game_object.comp.is_null( bullet ) );
 		}
 
 		[UnityTest]
-		public IEnumerator move_back_should_can_hit_left_or_right()
+		public IEnumerator move_back_should_can_shot()
 		{
 			turrent.desire_direction = Vector3.back;
 			yield return new WaitForSeconds( 1 );
-			controller.shot();
-			yield return new WaitForSeconds( 1 );
-			forward.assert_not_collision_enter();
-			try
-			{
-				left.assert_collision_enter();
-			}
-			catch ( System.Exception e )
-			{
-				right.assert_collision_enter();
-			}
-			back.assert_not_collision_enter();
+			var bullets = controller.shot();
+			Assert.AreEqual( bullets.Count, 1 );
+			foreach ( var bullet in bullets )
+				Assert.False( helper.game_object.comp.is_null( bullet ) );
 		}
 
 		[UnityTest]
-		public IEnumerator move_forward_should_can_hit_forward_assert()
+		public IEnumerator move_forward_should_can_shot()
 		{
 			turrent.desire_direction = Vector3.forward;
 			yield return new WaitForSeconds( 1 );
-			controller.shot();
-			yield return new WaitForSeconds( 1 );
-			forward.assert_collision_enter();
-
-			left.assert_not_collision_enter();
-			right.assert_not_collision_enter();
-			back.assert_not_collision_enter();
+			var bullets = controller.shot();
+			Assert.AreEqual( bullets.Count, 1 );
+			foreach ( var bullet in bullets )
+				Assert.False( helper.game_object.comp.is_null( bullet ) );
 		}
 	}
 }

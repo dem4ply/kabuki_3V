@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7483364729718810322}
   - component: {fileID: 1590867999784926565}
   - component: {fileID: 7479862297107699050}
+  - component: {fileID: 2347954400316705480}
   m_Layer: 0
   m_Name: turrent
   m_TagString: Untagged
@@ -88,6 +89,20 @@ MonoBehaviour:
   original_rotation: {x: 0, y: 0, z: 0}
   rotation_times: 0
   current_angle: 0
+--- !u!114 &2347954400316705480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231557116277685804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4de1142c182d74fa669a2e3c1de8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  motor: {fileID: 0}
 --- !u!1001 &7285250470444793282
 PrefabInstance:
   m_ObjectHideFlags: 0

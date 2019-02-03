@@ -6,9 +6,9 @@ using UnityEngine.TestTools;
 using helper.test.assert;
 using chibi.controller.weapon.gun.bullet;
 
-namespace tests.motor.weapons.gun.turrent
+namespace tests.controller.weapon.gun.turrent
 {
-	public class Turrent : helper.tests.Scene_test
+	public class Turrent_desire_direction : helper.tests.Scene_test
 	{
 		Assert_colision forward, left, right, back;
 		chibi.motor.weapons.gun.turrent.Turrent turrent;
@@ -42,7 +42,7 @@ namespace tests.motor.weapons.gun.turrent
 		[UnityTest]
 		public IEnumerator move_left_should_can_hit_left_assert()
 		{
-			turrent.desire_direction = Vector3.left;
+			controller.desire_direction = Vector3.left;
 			yield return new WaitForSeconds( 1 );
 			controller.shot();
 			yield return new WaitForSeconds( 1 );
@@ -56,7 +56,7 @@ namespace tests.motor.weapons.gun.turrent
 		[UnityTest]
 		public IEnumerator move_right_should_can_hit_right_assert()
 		{
-			turrent.desire_direction = Vector3.right;
+			controller.desire_direction = Vector3.right;
 			yield return new WaitForSeconds( 1 );
 			controller.shot();
 			yield return new WaitForSeconds( 1 );
@@ -70,7 +70,7 @@ namespace tests.motor.weapons.gun.turrent
 		[UnityTest]
 		public IEnumerator move_back_should_can_hit_left_or_right()
 		{
-			turrent.desire_direction = Vector3.back;
+			controller.desire_direction = Vector3.back;
 			yield return new WaitForSeconds( 1 );
 			controller.shot();
 			yield return new WaitForSeconds( 1 );
@@ -89,7 +89,7 @@ namespace tests.motor.weapons.gun.turrent
 		[UnityTest]
 		public IEnumerator move_forward_should_can_hit_forward_assert()
 		{
-			turrent.desire_direction = Vector3.forward;
+			controller.desire_direction = Vector3.forward;
 			yield return new WaitForSeconds( 1 );
 			controller.shot();
 			yield return new WaitForSeconds( 1 );

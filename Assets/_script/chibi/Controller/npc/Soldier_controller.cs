@@ -24,5 +24,10 @@ namespace chibi.controller.npc
 		{
 			throw new System.NotImplementedException();
 		}
+
+		protected override void load_motors()
+		{
+			//base.load_motors();
+		}
 	}
 }

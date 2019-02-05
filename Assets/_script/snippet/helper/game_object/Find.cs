@@ -44,6 +44,69 @@ namespace helper
 				return null;
 			}
 
+			public static ( T, T ) _<T>(
+				GameObject obj, string name1, string name2 )
+				where T : MonoBehaviour
+			{
+				return (
+					_<T>( obj, name1 ),
+					_<T>( obj, name2 )
+				);
+			}
+
+			public static ( T, T, T ) _<T>(
+				GameObject obj, string name1, string name2, string name3 )
+				where T : MonoBehaviour
+			{
+				return (
+					_<T>( obj, name1 ),
+					_<T>( obj, name2 ),
+					_<T>( obj, name3 )
+				);
+			}
+
+			public static ( T, T, T, T ) _<T>(
+				GameObject obj, string name1, string name2, string name3,
+				string name4 )
+				where T : MonoBehaviour
+			{
+				return (
+					_<T>( obj, name1 ),
+					_<T>( obj, name2 ),
+					_<T>( obj, name3 ),
+					_<T>( obj, name4 )
+				);
+			}
+
+			public static ( T, T, T, T, T ) _<T>(
+				GameObject obj, string name1, string name2, string name3,
+				string name4, string name5 )
+				where T : MonoBehaviour
+			{
+				return (
+					_<T>( obj, name1 ),
+					_<T>( obj, name2 ),
+					_<T>( obj, name3 ),
+					_<T>( obj, name4 ),
+					_<T>( obj, name5 )
+				);
+			}
+
+			public static ( T, T, T, T, T, T ) _<T>(
+				GameObject obj, string name1, string name2, string name3,
+				string name4, string name5, string name6 )
+				where T : MonoBehaviour
+			{
+				return (
+					_<T>( obj, name1 ),
+					_<T>( obj, name2 ),
+					_<T>( obj, name3 ),
+					_<T>( obj, name4 ),
+					_<T>( obj, name5 ),
+					_<T>( obj, name6 )
+				);
+			}
+
 			public static GameObject[] all( string name )
 			{
 				GameObject[] result = GameObject.FindObjectsOfType<GameObject>();

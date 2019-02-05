@@ -4,35 +4,30 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using helper.test.assert;
-using chibi.controller.ai;
 using chibi.controller.npc;
+using chibi.controller.ai;
 
-namespace tests.controller.npc.soldier.isometric
+namespace tests.controller.npc.soldier.side_scroll
 {
 	public class movement : helper.tests.Scene_test
 	{
-		Assert_colision up, down, left, right, jump;
+		Assert_colision up, down, left, right;
 		Ai_walk ai;
 
 		public override string scene_dir
 		{
 			get {
-				return "tests/scene/controller/motor/npc/motor isometric";
+				return "tests/scene/controller/motor/npc/motor side scroll";
 			}
 		}
 
 		public override void Instanciate_scenary()
 		{
 			base.Instanciate_scenary();
-			up = helper.game_object.Find._<Assert_colision>( scene, "assert up" );
-			down = helper.game_object.Find._<Assert_colision>(
-				scene, "assert down" );
-			left = helper.game_object.Find._<Assert_colision>(
-				scene, "assert left" );
-			right = helper.game_object.Find._<Assert_colision>(
-				scene, "assert right" );
-			jump = helper.game_object.Find._<Assert_colision>(
-				scene, "assert jump 1" );
+			( up, down, left, right ) = 
+				helper.game_object.Find._<Assert_colision>(
+					scene, "assert up", "assert down", "assert left",
+					"assert right" );
 
 			ai = helper.game_object.Find._<Ai_walk>( scene, "npc" );
 			var soldier = ai.gameObject.AddComponent<Soldier_controller>();
@@ -47,7 +42,7 @@ namespace tests.controller.npc.soldier.isometric
 			yield return new WaitForSeconds( 1 );
 			up.assert_collision_enter( ai.gameObject );
 			helper.test.assert.many.assert_colision.assert_not_collision_enter(
-				down, left, right, jump );
+				down, left, right );
 		}
 
 		[UnityTest]
@@ -57,36 +52,25 @@ namespace tests.controller.npc.soldier.isometric
 			yield return new WaitForSeconds( 1 );
 			down.assert_collision_enter( ai.gameObject );
 			helper.test.assert.many.assert_colision.assert_not_collision_enter(
-				up, left, right, jump );
+				up, left, right );
 		}
 
 		[UnityTest]
-		public IEnumerator when_move_to_left_should_touch_collider_left()
+		public IEnumerator when_move_to_left_should_touch_nothing()
 		{
 			ai.desire_direction = Vector3.left;
 			yield return new WaitForSeconds( 1 );
-			left.assert_collision_enter( ai.gameObject );
 			helper.test.assert.many.assert_colision.assert_not_collision_enter(
-				up, down, right, jump );
+				up, down, right, left );
 		}
 
 		[UnityTest]
-		public IEnumerator when_move_to_right_should_touch_collider_right()
+		public IEnumerator when_move_to_right_should_touch_nothing()
 		{
 			ai.desire_direction = Vector3.right;
 			yield return new WaitForSeconds( 1 );
-			right.assert_collision_enter( ai.gameObject );
 			helper.test.assert.many.assert_colision.assert_not_collision_enter(
-				up, down, left, jump );
-		}
-
-		[UnityTest]
-		public IEnumerator when_go_to_up_in_y_should_touch_nothing()
-		{
-			ai.desire_direction = Vector3.up;
-			yield return new WaitForSeconds( 1 );
-			helper.test.assert.many.assert_colision.assert_not_collision_enter(
-				up, down, left, jump, right );
+				up, down, left, right );
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace chibi.controller
 
 		public motor.Motor motor;
 
-		public Vector3 desire_direction
+		public virtual Vector3 desire_direction
 		{
 			get {
 				return _desire_direction;
@@ -26,7 +26,7 @@ namespace chibi.controller
 			}
 		}
 
-		public float speed {
+		public virtual float speed {
 			get {
 				return _speed;
 			}

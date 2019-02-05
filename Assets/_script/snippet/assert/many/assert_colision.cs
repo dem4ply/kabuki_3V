@@ -153,7 +153,8 @@ namespace helper.test.assert.many
 
 		private static void raise_a_fail( string msg )
 		{
-			throw new System.Exception( msg );
+			if ( msg.Length > 0 )
+				throw new System.Exception( msg );
 		}
 
 		private static string compact_list_of_names( List<string> names )

@@ -31,6 +31,7 @@ namespace tests.controller.npc.soldier.side_scroll
 
 			ai = helper.game_object.Find._<Ai_walk>( scene, "npc" );
 			var soldier = ai.gameObject.AddComponent<Soldier_controller>();
+			soldier.npc = ai.controller as Controller_npc;
 			ai.controller = soldier;
 			ai.use_max_speed = true;
 		}

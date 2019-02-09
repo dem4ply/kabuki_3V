@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace chibi.controller.npc
 {
-	public class Soldier_controller : Controller
+	public class Soldier_controller : Controller_npc
 	{
 		public chibi.controller.weapon.gun.turrent.Controller_turrent turrent;
 		public chibi.controller.npc.Controller_npc npc;
@@ -50,7 +50,12 @@ namespace chibi.controller.npc
 			throw new System.NotImplementedException();
 		}
 
-		public void hold_turrent()
+		public void grab_turrent()
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public weapon.gun.bullet.Controller_bullet shot()
 		{
 			throw new System.NotImplementedException();
 		}

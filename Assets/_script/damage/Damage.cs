@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace damage
 {
-	public class Damage : chibi_base.Chibi_behaviour {
+	public class Damage : chibi.Chibi_behaviour {
 		public damage.Damage damage;
 		public behavior.Beavior behavior;
 		public rol_sheet.Rol_sheet owner;

@@ -8,6 +8,19 @@ namespace chibi.controller.weapon.gun.turrent
 	{
 		Gun[] guns;
 
+		protected rol_sheet.Rol_sheet _owner;
+		public rol_sheet.Rol_sheet owner
+		{
+			get {
+				return _owner;
+			}
+			set {
+				_owner = value;
+				foreach ( Gun gun in guns )
+					gun.owner = value;
+			}
+		}
+
 		public List<bullet.Controller_bullet> shot()
 		{
 			var bullets_controller = new List<bullet.Controller_bullet>();

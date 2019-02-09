@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1213317015969613010}
   - component: {fileID: 4496845336156898826}
   - component: {fileID: 8952121329113947013}
+  - component: {fileID: 1072532848706065228}
   m_Layer: 0
   m_Name: npc
   m_TagString: Untagged
@@ -172,6 +173,21 @@ MonoBehaviour:
   angle_vector_for_wall: {x: 0, y: 1, z: 0}
   min_angle_for_wall: 70
   max_angle_for_wall: 110
+--- !u!114 &1072532848706065228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359830470592594691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8585d4d3ac3f2b2438dd3f9c5b052888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  faction: {fileID: 0}
+  person: {fileID: 0}
 --- !u!1 &1359830471659977002
 GameObject:
   m_ObjectHideFlags: 0

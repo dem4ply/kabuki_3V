@@ -16,14 +16,14 @@ namespace weapon
 				get { return "object/weapon/gun/ammo/default"; }
 			}
 
-			public virtual Bullet_motor instanciate()
+			protected virtual Bullet_motor instanciate()
 			{
 				Bullet_motor obj =
 					singleton.object_pool.Ammo_pool.instance.pop( this );
 				return obj;
 			}
 
-			public virtual Bullet_motor instanciate( Vector3 position )
+			protected virtual Bullet_motor instanciate( Vector3 position )
 			{
 				Bullet_motor obj = instanciate();
 				obj.transform.position = position;
@@ -34,11 +34,11 @@ namespace weapon
 				Vector3 position, rol_sheet.Rol_sheet owner )
 			{
 				Bullet_motor obj = instanciate( position );
-				/*
-				Damage[] damages = null; // obj.damages;
-				foreach ( Damage damage in damages )
+				var controller = obj.GetComponent<
+					chibi.controller.weapon.gun.bullet.Controller_bullet>();
+				var damages = controller.damages;
+				foreach ( var damage in damages )
 					damage.owner = owner;
-				*/
 				return obj;
 			}
 		}

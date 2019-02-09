@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using chibi.controller.weapon.gun.bullet;
 
 namespace chibi.controller.npc
 {
@@ -10,8 +11,11 @@ namespace chibi.controller.npc
 		public chibi.controller.npc.Controller_npc npc;
 		public Transform hold_turrent_position;
 
+		public rol_sheet.Rol_sheet rol;
+
 		public bool is_using_turrent = false;
 
+		#region funciones de controller
 		public override Vector3 desire_direction
 		{
 			get {
@@ -39,25 +43,40 @@ namespace chibi.controller.npc
 					npc.speed = value;
 			}
 		}
+		#endregion
 
-		public void change_owner_turrent()
-		{
-			throw new System.NotImplementedException();
-		}
-
+		#region controlles de torreta
 		public void release_turrent()
 		{
-			throw new System.NotImplementedException();
+			turrent.owner = null;
+			is_using_turrent = false;
 		}
 
 		public void grab_turrent()
 		{
-			throw new System.NotImplementedException();
+			if ( turrent )
+			{
+				turrent.owner = rol;
+				is_using_turrent = true;
+			}
 		}
 
-		public weapon.gun.bullet.Controller_bullet shot()
+		public List< Controller_bullet > shot()
 		{
-			throw new System.NotImplementedException();
+			if ( is_using_turrent )
+				return turrent.shot();
+			return null;
+		}
+		#endregion
+
+		protected override void _init_cache()
+		{
+			base._init_cache();
+			rol = GetComponent< rol_sheet.Rol_sheet >();
+			if ( !rol )
+				Debug.LogError( string.Format(
+					"[soldier controller] no encontro un 'Rol_sheet' en {0}",
+					helper.game_object.name.full( this ) ) );
 		}
 
 		protected override void load_motors()

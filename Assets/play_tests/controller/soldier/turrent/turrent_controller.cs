@@ -67,9 +67,12 @@ namespace tests.controller.trigger
 			npc.grab_turrent();
 			yield return new WaitForSeconds( 0.5f );
 			npc.desire_direction = Vector3.left;
-			var bullet = npc.shot();
+			yield return new WaitForSeconds( 0.5f );
+			var bullets = npc.shot();
 			yield return new WaitForSeconds( 1f );
-			left.assert_collision_enter( bullet );
+			Assert.IsNotNull( bullets );
+			foreach( var bullet in bullets )
+				left.assert_collision_enter( bullet );
 		}
 	}
 }

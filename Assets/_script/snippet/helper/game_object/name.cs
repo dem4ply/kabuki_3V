@@ -9,5 +9,10 @@ namespace helper.game_object
 		{
 			return obj.name;
 		}
+
+		public static string full( MonoBehaviour mono )
+		{
+			return full( mono.gameObject );
+		}
 	}
 }

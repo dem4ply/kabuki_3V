@@ -99,5 +99,33 @@ namespace tests.controller.weapon.gun.turrent
 			right.assert_not_collision_enter();
 			back.assert_not_collision_enter();
 		}
+
+		[UnityTest]
+		public IEnumerator multiple_shots()
+		{
+			controller.desire_direction = Vector3.forward;
+			yield return new WaitForSeconds( 1 );
+			var bullet = controller.shot();
+			yield return new WaitForSeconds( 1 );
+			forward.assert_collision_enter( bullet[0] );
+
+			controller.desire_direction = Vector3.left;
+			yield return new WaitForSeconds( 1 );
+			bullet = controller.shot();
+			yield return new WaitForSeconds( 1 );
+			left.assert_collision_enter( bullet[0] );
+
+			controller.desire_direction = Vector3.right;
+			yield return new WaitForSeconds( 1 );
+			bullet = controller.shot();
+			yield return new WaitForSeconds( 1 );
+			right.assert_collision_enter( bullet[0] );
+
+			controller.desire_direction = Vector3.back;
+			yield return new WaitForSeconds( 1 );
+			bullet = controller.shot();
+			yield return new WaitForSeconds( 1 );
+			back.assert_not_collision_enter();
+		}
 	}
 }

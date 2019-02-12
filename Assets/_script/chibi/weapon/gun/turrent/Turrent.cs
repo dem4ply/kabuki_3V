@@ -11,14 +11,16 @@ namespace chibi.motor.weapons.gun.turrent
 
 		[HideInInspector] public float current_rotation_angle = 0f;
 
-		public Vector3 original_rotation;
+		public Vector3 original_direction;
+		public Quaternion original_rotation;
 		public float rotation_times;
 		public float current_angle = 0f;
 
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			original_rotation = transform.forward;
+			original_direction = transform.forward;
+			original_rotation = transform.rotation;
 		}
 	}
 }

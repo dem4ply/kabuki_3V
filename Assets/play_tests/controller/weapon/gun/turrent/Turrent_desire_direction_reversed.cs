@@ -8,25 +8,25 @@ using chibi.controller.weapon.gun.bullet;
 
 namespace tests.controller.weapon.gun.turrent
 {
-	public class Turrent_side_scroll : helper.tests.Scene_test
+	public class Turrent_desire_direction_reversed : helper.tests.Scene_test
 	{
-		Assert_colision up, left, right, down;
+		Assert_colision forward, left, right, back;
 		chibi.motor.weapons.gun.turrent.Turrent turrent;
 		chibi.controller.weapon.gun.turrent.Controller_turrent controller;
 
 		public override string scene_dir
 		{
 			get {
-				return "tests/scene/chibi/weapon/gun/turrent side scroll";
+				return "tests/scene/chibi/weapon/gun/turrent reverse";
 			}
 		}
 
 		public override void Instanciate_scenary()
 		{
 			base.Instanciate_scenary();
-			( up, down, left, right ) = 
+			( back, forward, left, right ) = 
 				helper.game_object.Find._<Assert_colision>(
-					scene, "up", "down", "left", "right" );
+					scene, "back", "forward", "left", "right" );
 
 			turrent = helper.game_object.Find._<
 				chibi.motor.weapons.gun.turrent.Turrent>( scene, "turrent" );
@@ -39,33 +39,29 @@ namespace tests.controller.weapon.gun.turrent
 		public IEnumerator multiple_shots()
 		{
 			yield return new WaitForSeconds( 1 );
-			controller.desire_direction = Vector3.up;
-			Debug.Log( "up" );
+			controller.desire_direction = Vector3.right;
 			yield return new WaitForSeconds( 1 );
 			var bullet = controller.shot();
-			yield return new WaitForSeconds( 1 );
-			up.assert_collision_enter( bullet[0] );
-
-			controller.desire_direction = Vector3.down;
-			Debug.Log( "down" );
-			yield return new WaitForSeconds( 1 );
-			bullet = controller.shot();
-			yield return new WaitForSeconds( 1 );
-			down.assert_collision_enter( bullet[0] );
-
-			controller.desire_direction = Vector3.right;
-			Debug.Log( "right" );
-			yield return new WaitForSeconds( 1 );
-			bullet = controller.shot();
 			yield return new WaitForSeconds( 1 );
 			right.assert_collision_enter( bullet[0] );
 
 			controller.desire_direction = Vector3.left;
-			Debug.Log( "left" );
 			yield return new WaitForSeconds( 1 );
 			bullet = controller.shot();
 			yield return new WaitForSeconds( 1 );
-			left.assert_not_collision_enter();
+			left.assert_collision_enter( bullet[0] );
+
+			controller.desire_direction = Vector3.back;
+			yield return new WaitForSeconds( 1 );
+			bullet = controller.shot();
+			yield return new WaitForSeconds( 1 );
+			back.assert_collision_enter( bullet[0] );
+
+			controller.desire_direction = Vector3.forward;
+			yield return new WaitForSeconds( 1 );
+			bullet = controller.shot();
+			yield return new WaitForSeconds( 1 );
+			forward.assert_not_collision_enter();
 		}
 	}
 }

@@ -10,14 +10,22 @@ namespace helper
 		{
 			public class Draw
 			{
-				protected Chibi_behaviour _instance;
+				protected MonoBehaviour _instance;
 
 				public bool debuging
 				{
-					get { return _instance.debug_mode;  }
+					get {
+						var a = _instance as chibi.Chibi_behaviour;
+						if ( a )
+							return a.debug_mode;
+						var b = _instance as chibi_base.Chibi_behaviour;
+						if ( b )
+							return b.debug_mode;
+						return false;
+					}
 				}
 
-				public Draw( Chibi_behaviour instance )
+				public Draw( MonoBehaviour instance )
 				{
 					_instance = instance;
 				}

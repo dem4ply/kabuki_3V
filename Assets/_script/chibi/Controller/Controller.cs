@@ -23,6 +23,7 @@ namespace chibi.controller
 			set {
 				_desire_direction = value;
 				motor.desire_direction = value;
+				debug.draw.arrow( value, Color.black );
 			}
 		}
 

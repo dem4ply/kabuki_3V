@@ -13,6 +13,7 @@ namespace chibi.controller.weapon.gun.turrent
 			}
 
 			set {
+				//base.desire_direction = value;
 				base.desire_direction = new Vector3( value.z, value.y, value.x );
 			}
 		}

@@ -13,12 +13,12 @@ namespace chibi {
 
 		protected virtual void Awake()
 		{
-			//debug = new helper.debug.Debug( this );
+			debug = new helper.debug.Debug( this );
 			_init_cache();
 		}
 
 		protected virtual void Start() {
-			///debug = new helper.debug.Debug( this );
+			debug = new helper.debug.Debug( this );
 		}
 
 		protected virtual void _init_cache() {}
